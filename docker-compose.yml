@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  mcp_ffmpeg_api:
+    container_name: mcp_ffmpeg_api
+    build: ./mcp_api
+    restart: always
+    ports:
+      - "8800:8800"
+    networks:
+      - mcp_net
+    volumes:
+      - ./media:/media
+      - ./mcp_api/temp:/app/temp
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: always
+    networks:
+      - mcp_net
+    command: >
+      tunnel --no-autoupdate run --token eyJhIjoiYjY0ZGIyODBlM2MzYTVjNTIzMDA0M2IwNzk0MDI3NjciLCJ0IjoiODViOTViZGQtOTgyOS00NTgxLTk1NmItNGFkMjMxMDAwOWQ4IiwicyI6Ik9UQTVaamc1TXpNdFpUSTROaTAwTVRrNUxUbGtNemN0WVdVMU0yWm1PVFl6WlRCaSJ9
+
+networks:
+  mcp_net:
+    driver: bridge

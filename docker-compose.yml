@@ -20,7 +20,7 @@ services:
     networks:
       - mcp_net
     command: >
-      tunnel --no-autoupdate run --token eyJhIjoiYjY0ZGIyODBlM2MzYTVjNTIzMDA0M2IwNzk0MDI3NjciLCJ0IjoiODViOTViZGQtOTgyOS00NTgxLTk1NmItNGFkMjMxMDAwOWQ4IiwicyI6Ik9UQTVaamc1TXpNdFpUSTROaTAwTVRrNUxUbGtNemN0WVdVMU0yWm1PVFl6WlRCaSJ9
+      tunnel --no-autoupdate run --token xx
 
 networks:
   mcp_net:
